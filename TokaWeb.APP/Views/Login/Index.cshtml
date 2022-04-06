@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TokaWeb.APP</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+     
+    <div class="container">
+        <main role="main pt-4" class="pb-3">
+            <!-- Section: Design Block -->
+<section class="">
+  <!-- Jumbotron -->
+  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            The power of imagination  <br />
+            <span class="text-primary">makes us infinite</span>
+          </h1>
+          <p style="color: hsl(217, 10%, 50.8%)">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+            quibusdam tempora at cupiditate quis eum maiores libero
+            veritatis? Dicta facilis sint aliquid ipsum atque?
+          </p>
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <form class="formlogin">
+               @Html.AntiForgeryToken()
+
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="text" id="Username" name="Username" class="form-control" required value="ucand0021">
+                  <label class="form-label" for="Username">Nombre de usuario</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="Password" name="Password" class="form-control" required value="yNDVARG80sr@dDPc2yCT!">
+                  <label class="form-label" for="Password">Contraseña</label>
+                </div>
+
+                <!-- Checkbox -->
+                
+
+                <!-- Submit button -->
+                <button type="button" id="btnlogin" class="btn btn-primary btn-block mb-4 btn-l">
+                    Accesar
+                </button>
+
+                <!-- Register buttons -->
+                
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - TokaWeb.APP
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/notify.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap-datetimepicker.js"></script>
+    <script src="~/js/login.js" asp-append-version="true"></script>
+ </body>
+</html>
+

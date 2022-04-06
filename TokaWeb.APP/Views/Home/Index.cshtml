@@ -1,0 +1,123 @@
+﻿ 
+@{
+    var pp = ViewBag.pp;
+}
+
+<div class="text-center">
+    <h1 class="display-4">Personas Fisicas</h1>
+    <p>Lista de personas disponibles</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+           <div class="row">
+               <div class="col-md-12 text-right pb-3">
+                 <button type="button" class="btn btn-dark  btn-sm btn-open-modal"><i class="fa-solid fa-circle-plus"></i> Agregar</button>
+                </div>
+           </div>
+            <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">RFC</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Acciones</th>
+                    </tr> 
+                  </thead>
+                  <tbody>
+                       @foreach (var row in pp)
+                        {
+                        string activo = "";
+                        string m = "";
+                        if (row.FechaNacimiento != null)
+                        {
+                             m = row.FechaNacimiento.ToString("yyyy-MM-dd");
+
+                        }
+                        if (row.Activo)
+                        {
+                            activo = "Activo";
+                        }
+                        else
+                        {
+                             activo = "Inactivo";
+                        }
+                            <tr>
+                              <th scope="row">@row.IdPersonaFisica</th> 
+                              <td> @row.Nombre @row.ApellidoPaterno @row.ApellidoMaterno 
+                              @if(row.FechaNacimiento != null){
+                                  <div class="font-7em layer1">Fecha nacimiendo: <span>@m</span></div>
+                                    
+                                }
+                              </td>
+                              <td>@row.Rfc</td>
+                              <td>@activo</td>
+                              <td >
+                                  <div data-person="@row.IdPersonaFisica">
+                                      
+                                  
+                                  <button type="button" class="btn btn-primary  btn-sm" onclick="pp.getPerson(this)"><i class="fa-solid fa-file-pen"></i> Editar</button>
+                                  <button   type="button" class="btn btn-danger  btn-sm" onclick="pp.DeletePerson(this)"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+                                  </div>
+
+                              </td>
+                            </tr> 
+                        }
+                    
+                  </tbody>
+                </table>
+
+        </div>
+    </div>    
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="nuevaPersona" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Persona</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="newPerson">
+            @Html.AntiForgeryToken()
+          <div class="form-group"> 
+            <label for="exampleInputEmail1">Nombre*</label>
+            <input type="text" class="form-control" id="Nombre" name="Nombre" aria-describedby="emailHelp" placeholder="Nombre" required>
+          </div>
+          <div class="form-group"> 
+            <label for="exampleInputEmail1">ApellidoPaterno*</label>
+            <input type="text" class="form-control" id="ApellidoPaterno" name="ApellidoPaterno" aria-describedby="emailHelp" placeholder="Apellido Paterno" required>
+          </div>
+          <div class="form-group"> 
+            <label for="exampleInputEmail1">ApellidoMaterno*</label>
+            <input type="text" class="form-control" id="ApellidoMaterno" name="ApellidoMaterno" aria-describedby="emailHelp" placeholder="Apellido Materno " required>
+          </div><div class="form-group">
+            <label for="exampleInputPassword1">FechaNacimiento</label>
+            <input type="text" class="form-control" id="FechaNacimiento" name="FechaNacimiento" placeholder="12/06/1985" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">RFC*</label>
+            <input type="text" class="form-control" id="Rfc" name="Rfc" placeholder="X00X000000" required>
+          </div>
+           <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="CheckActivo" name="CheckActivo">
+            <label class="form-check-label" for="exampleCheck1">Activo</label>
+          </div>
+           
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-new-person">Guardar</button>
+        <button type="button" class="btn btn-primary btn-update-person">Actualizar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
